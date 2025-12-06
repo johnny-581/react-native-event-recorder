@@ -7,13 +7,15 @@
       "@/*": [
         "./*"
       ]
-    }
+    },
+    "moduleResolution": "bundler"
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "amplify_outputs.json"
+    "amplify_outputs.json",
+    "amplify/**/*" 
   ]
 }
