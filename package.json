@@ -45,9 +45,16 @@
     "react-native-worklets": "0.5.1"
   },
   "devDependencies": {
+    "@aws-amplify/backend": "^1.18.0",
+    "@aws-amplify/backend-cli": "^1.8.0",
     "@types/react": "~19.1.0",
+    "aws-cdk": "^2.1033.0",
+    "aws-cdk-lib": "^2.232.1",
+    "constructs": "^10.4.3",
+    "esbuild": "^0.25.12",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~10.0.0",
+    "tsx": "^4.21.0",
     "typescript": "~5.9.2"
   },
   "private": true
