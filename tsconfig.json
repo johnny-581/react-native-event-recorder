@@ -3,12 +3,12 @@
   "compilerOptions": {
     "strict": true,
     "resolveJsonModule": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
     "paths": {
-      "@/*": [
-        "./*"
-      ]
-    },
-    "moduleResolution": "bundler"
+      "@/*": ["./*"]
+    }
   },
   "include": [
     "**/*.ts",
@@ -16,6 +16,6 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "amplify_outputs.json",
-    "amplify/**/*" 
+    "amplify/**/*"
   ]
 }

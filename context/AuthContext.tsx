@@ -1,13 +1,13 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { 
-  getCurrentUser, 
-  signIn, 
-  signUp, 
-  confirmSignUp, 
-  signOut, 
+import {
   AuthUser,
+  confirmSignUp,
+  getCurrentUser,
   resendSignUpCode,
+  signIn,
+  signOut,
+  signUp,
 } from 'aws-amplify/auth';
+import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 
 interface LoginResult {
   isSignedIn: boolean;
