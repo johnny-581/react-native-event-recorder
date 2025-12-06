@@ -57,5 +57,8 @@
     "tsx": "^4.21.0",
     "typescript": "~5.9.2"
   },
-  "private": true
+  "private": true,
+  "optionalDependencies": {
+    "@parcel/watcher-linux-x64-glibc": "^2.5.1"
+  }
 }
