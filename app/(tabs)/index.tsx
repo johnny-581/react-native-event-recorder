@@ -1,98 +1,337 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { getDateKey, useEvent } from "@/context/EventContext";
+import { useColorScheme } from "@/hooks/use-color-scheme";
+import * as Haptics from "expo-haptics";
+import { Check, Circle, Edit3 } from "lucide-react-native";
+import React, { useState } from "react";
+import {
+  Modal,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+const MOTIVATIONAL_MESSAGES = [
+  "Consistency is what matters.",
+  "Small steps lead to big changes.",
+  "You're building something great.",
+  "Every day counts.",
+  "Keep showing up.",
+  "Progress, not perfection.",
+  "One day at a time.",
+  "You've got this!",
+];
 
-export default function HomeScreen() {
+function getRandomMessage() {
+  return MOTIVATIONAL_MESSAGES[
+    Math.floor(Math.random() * MOTIVATIONAL_MESSAGES.length)
+  ];
+}
+
+function formatDate(date: Date): string {
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  return date.toLocaleDateString("en-US", options);
+}
+
+export default function DayView() {
+  const insets = useSafeAreaInsets();
+  const colorScheme = useColorScheme();
+  const isDark = colorScheme === "dark";
+
+  const { eventName, setEventName, selectedDate, toggleDay, isRecorded } =
+    useEvent();
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedName, setEditedName] = useState(eventName);
+  const [motivationalMessage] = useState(getRandomMessage);
+
+  const dateKey = getDateKey(selectedDate);
+  const recorded = isRecorded(dateKey);
+
+  const isToday = getDateKey(new Date()) === dateKey;
+
+  const handleToggle = async () => {
+    await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    toggleDay(dateKey);
+  };
+
+  const handleSaveEdit = () => {
+    if (editedName.trim()) {
+      setEventName(editedName.trim());
+    } else {
+      setEditedName(eventName);
+    }
+    setIsEditing(false);
+  };
+
+  const colors = {
+    background: isDark ? "#0D1117" : "#F8FAFC",
+    card: isDark ? "#161B22" : "#FFFFFF",
+    text: isDark ? "#E6EDF3" : "#1E293B",
+    textSecondary: isDark ? "#8B949E" : "#64748B",
+    accent: "#10B981", // Emerald green
+    accentLight: isDark ? "#065F46" : "#D1FAE5",
+    border: isDark ? "#30363D" : "#E2E8F0",
+    buttonInactive: isDark ? "#21262D" : "#F1F5F9",
+  };
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+    <View
+      style={[
+        styles.container,
+        { backgroundColor: colors.background, paddingTop: insets.top },
+      ]}
+    >
+      {/* Date Header */}
+      <View style={styles.header}>
+        <Text style={[styles.dateText, { color: colors.text }]}>
+          {formatDate(selectedDate)}
+        </Text>
+        {isToday && (
+          <View style={[styles.todayBadge, { backgroundColor: colors.accent }]}>
+            <Text style={styles.todayText}>Today</Text>
+          </View>
+        )}
+      </View>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      {/* Event Name */}
+      <Pressable
+        style={styles.eventNameContainer}
+        onPress={() => {
+          setEditedName(eventName);
+          setIsEditing(true);
+        }}
+      >
+        <Text style={[styles.eventName, { color: colors.text }]}>
+          {eventName}
+        </Text>
+        <Edit3 size={18} color={colors.textSecondary} style={styles.editIcon} />
+      </Pressable>
+
+      {/* Main Toggle Button */}
+      <View style={styles.buttonContainer}>
+        <Pressable
+          onPress={handleToggle}
+          style={({ pressed }) => [
+            styles.toggleButton,
+            {
+              backgroundColor: recorded ? colors.accent : colors.buttonInactive,
+              borderColor: recorded ? colors.accent : colors.border,
+              transform: [{ scale: pressed ? 0.95 : 1 }],
+            },
+          ]}
+        >
+          {recorded ? (
+            <Check size={80} color="#FFFFFF" strokeWidth={3} />
+          ) : (
+            <Circle size={80} color={colors.textSecondary} strokeWidth={2} />
+          )}
+        </Pressable>
+        <Text
+          style={[
+            styles.statusText,
+            { color: recorded ? colors.accent : colors.textSecondary },
+          ]}
+        >
+          {recorded ? "Recorded!" : "Tap to record"}
+        </Text>
+      </View>
+
+      {/* Motivational Message */}
+      <View
+        style={[
+          styles.messageCard,
+          { backgroundColor: colors.card, borderColor: colors.border },
+        ]}
+      >
+        <Text style={[styles.messageText, { color: colors.textSecondary }]}>
+          "{motivationalMessage}"
+        </Text>
+      </View>
+
+      {/* Edit Modal */}
+      <Modal
+        visible={isEditing}
+        animationType="fade"
+        transparent={true}
+        onRequestClose={() => setIsEditing(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={[styles.modalContent, { backgroundColor: colors.card }]}>
+            <Text style={[styles.modalTitle, { color: colors.text }]}>
+              Rename Your Event
+            </Text>
+            <TextInput
+              style={[
+                styles.input,
+                {
+                  backgroundColor: colors.background,
+                  color: colors.text,
+                  borderColor: colors.border,
+                },
+              ]}
+              value={editedName}
+              onChangeText={setEditedName}
+              placeholder="e.g., Swimming, Meditation..."
+              placeholderTextColor={colors.textSecondary}
+              autoFocus
+              selectTextOnFocus
+            />
+            <View style={styles.modalButtons}>
+              <Pressable
+                style={[
+                  styles.modalButton,
+                  { backgroundColor: colors.buttonInactive },
+                ]}
+                onPress={() => setIsEditing(false)}
+              >
+                <Text style={[styles.modalButtonText, { color: colors.text }]}>
+                  Cancel
+                </Text>
+              </Pressable>
+              <Pressable
+                style={[styles.modalButton, { backgroundColor: colors.accent }]}
+                onPress={handleSaveEdit}
+              >
+                <Text style={[styles.modalButtonText, { color: "#FFFFFF" }]}>
+                  Save
+                </Text>
+              </Pressable>
+            </View>
+          </View>
+        </View>
+      </Modal>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    flex: 1,
+    paddingHorizontal: 24,
   },
-  stepContainer: {
-    gap: 8,
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20,
     marginBottom: 8,
+    gap: 12,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  dateText: {
+    fontSize: 18,
+    fontWeight: "500",
+  },
+  todayBadge: {
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+  todayText: {
+    color: "#FFFFFF",
+    fontSize: 12,
+    fontWeight: "600",
+  },
+  eventNameContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 40,
+  },
+  eventName: {
+    fontSize: 32,
+    fontWeight: "700",
+    letterSpacing: -0.5,
+  },
+  editIcon: {
+    marginLeft: 10,
+  },
+  buttonContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 40,
+  },
+  toggleButton: {
+    width: 180,
+    height: 180,
+    borderRadius: 90,
+    borderWidth: 3,
+    alignItems: "center",
+    justifyContent: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 12,
+    elevation: 8,
+  },
+  statusText: {
+    marginTop: 24,
+    fontSize: 18,
+    fontWeight: "600",
+  },
+  messageCard: {
+    paddingVertical: 20,
+    paddingHorizontal: 24,
+    borderRadius: 16,
+    borderWidth: 1,
+    marginBottom: 40,
+  },
+  messageText: {
+    fontSize: 16,
+    fontStyle: "italic",
+    textAlign: "center",
+    lineHeight: 24,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 24,
+  },
+  modalContent: {
+    width: "100%",
+    maxWidth: 340,
+    borderRadius: 20,
+    padding: 24,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.25,
+    shadowRadius: 24,
+    elevation: 12,
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: "700",
+    marginBottom: 20,
+    textAlign: "center",
+  },
+  input: {
+    borderWidth: 1,
+    borderRadius: 12,
+    padding: 16,
+    fontSize: 16,
+    marginBottom: 20,
+  },
+  modalButtons: {
+    flexDirection: "row",
+    gap: 12,
+  },
+  modalButton: {
+    flex: 1,
+    paddingVertical: 14,
+    borderRadius: 12,
+    alignItems: "center",
+  },
+  modalButtonText: {
+    fontSize: 16,
+    fontWeight: "600",
   },
 });

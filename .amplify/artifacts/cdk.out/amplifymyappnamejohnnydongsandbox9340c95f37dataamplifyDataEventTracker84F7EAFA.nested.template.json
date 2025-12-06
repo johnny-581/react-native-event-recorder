@@ -1,0 +1,2080 @@
+{
+ "Parameters": {
+  "DynamoDBModelTableReadIOPS": {
+   "Type": "Number",
+   "Default": 5,
+   "Description": "The number of read IOPS the table should support."
+  },
+  "DynamoDBModelTableWriteIOPS": {
+   "Type": "Number",
+   "Default": 5,
+   "Description": "The number of write IOPS the table should support."
+  },
+  "DynamoDBBillingMode": {
+   "Type": "String",
+   "Default": "PAY_PER_REQUEST",
+   "AllowedValues": [
+    "PAY_PER_REQUEST",
+    "PROVISIONED"
+   ],
+   "Description": "Configure @model types to create DynamoDB tables with PAY_PER_REQUEST or PROVISIONED billing modes."
+  },
+  "DynamoDBEnablePointInTimeRecovery": {
+   "Type": "String",
+   "Default": "false",
+   "AllowedValues": [
+    "true",
+    "false"
+   ],
+   "Description": "Whether to enable Point in Time Recovery on the table."
+  },
+  "DynamoDBEnableServerSideEncryption": {
+   "Type": "String",
+   "Default": "true",
+   "AllowedValues": [
+    "true",
+    "false"
+   ],
+   "Description": "Enable server side encryption powered by KMS."
+  },
+  "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResourceED8CB3C5Outputsamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataAmplifyTableManagerTableManage5892DC78": {
+   "Type": "String"
+  },
+  "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId": {
+   "Type": "String"
+  },
+  "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPINONEDS12D461E0Name": {
+   "Type": "String"
+  },
+  "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthauthenticatedUserRoleF4B8D996Ref": {
+   "Type": "String"
+  },
+  "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthunauthenticatedUserRoleA4C03600Ref": {
+   "Type": "String"
+  },
+  "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthIdentityPoolBA9F86ACRef": {
+   "Type": "String"
+  }
+ },
+ "Conditions": {
+  "HasEnvironmentParameter": {
+   "Fn::Not": [
+    {
+     "Fn::Equals": [
+      "NONE",
+      "NONE"
+     ]
+    }
+   ]
+  },
+  "ShouldUsePayPerRequestBilling": {
+   "Fn::Equals": [
+    {
+     "Ref": "DynamoDBBillingMode"
+    },
+    "PAY_PER_REQUEST"
+   ]
+  },
+  "ShouldUsePointInTimeRecovery": {
+   "Fn::Equals": [
+    {
+     "Ref": "DynamoDBEnablePointInTimeRecovery"
+    },
+    "true"
+   ]
+  },
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-3"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-4"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "il-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Equals": [
+      {
+       "Ref": "AWS::Region"
+      },
+      "us-west-2"
+     ]
+    }
+   ]
+  }
+ },
+ "Resources": {
+  "EventTrackerTable": {
+   "Type": "Custom::AmplifyDynamoDBTable",
+   "Properties": {
+    "ServiceToken": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResourceED8CB3C5Outputsamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataAmplifyTableManagerTableManage5892DC78"
+    },
+    "tableName": {
+     "Fn::Join": [
+      "",
+      [
+       "EventTracker-",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+       },
+       "-NONE"
+      ]
+     ]
+    },
+    "attributeDefinitions": [
+     {
+      "attributeName": "id",
+      "attributeType": "S"
+     }
+    ],
+    "keySchema": [
+     {
+      "attributeName": "id",
+      "keyType": "HASH"
+     }
+    ],
+    "provisionedThroughput": {
+     "Fn::If": [
+      "ShouldUsePayPerRequestBilling",
+      {
+       "Ref": "AWS::NoValue"
+      },
+      {
+       "ReadCapacityUnits": {
+        "Ref": "DynamoDBModelTableReadIOPS"
+       },
+       "WriteCapacityUnits": {
+        "Ref": "DynamoDBModelTableWriteIOPS"
+       }
+      }
+     ]
+    },
+    "sseSpecification": {
+     "sseEnabled": false
+    },
+    "streamSpecification": {
+     "streamViewType": "NEW_AND_OLD_IMAGES"
+    },
+    "deletionProtectionEnabled": false,
+    "allowDestructiveGraphqlSchemaUpdates": true,
+    "replaceTableUponGsiUpdate": true,
+    "pointInTimeRecoverySpecification": {
+     "Fn::If": [
+      "ShouldUsePointInTimeRecovery",
+      {
+       "PointInTimeRecoveryEnabled": true
+      },
+      {
+       "Ref": "AWS::NoValue"
+      }
+     ]
+    },
+    "billingMode": {
+     "Fn::If": [
+      "ShouldUsePayPerRequestBilling",
+      "PAY_PER_REQUEST",
+      {
+       "Ref": "AWS::NoValue"
+      }
+     ]
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/EventTrackerTable/Default/Default"
+   }
+  },
+  "EventTrackerIAMRole6D8F8254": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "appsync.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Policies": [
+     {
+      "PolicyDocument": {
+       "Statement": [
+        {
+         "Action": [
+          "dynamodb:BatchGetItem",
+          "dynamodb:BatchWriteItem",
+          "dynamodb:PutItem",
+          "dynamodb:DeleteItem",
+          "dynamodb:GetItem",
+          "dynamodb:Scan",
+          "dynamodb:Query",
+          "dynamodb:UpdateItem",
+          "dynamodb:ConditionCheckItem",
+          "dynamodb:DescribeTable",
+          "dynamodb:GetRecords",
+          "dynamodb:GetShardIterator"
+         ],
+         "Effect": "Allow",
+         "Resource": [
+          {
+           "Fn::Sub": [
+            "arn:${AWS::Partition}:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${tablename}",
+            {
+             "tablename": {
+              "Fn::Join": [
+               "",
+               [
+                "EventTracker-",
+                {
+                 "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+                },
+                "-NONE"
+               ]
+              ]
+             }
+            }
+           ]
+          },
+          {
+           "Fn::Sub": [
+            "arn:${AWS::Partition}:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${tablename}/*",
+            {
+             "tablename": {
+              "Fn::Join": [
+               "",
+               [
+                "EventTracker-",
+                {
+                 "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+                },
+                "-NONE"
+               ]
+              ]
+             }
+            }
+           ]
+          }
+         ]
+        }
+       ],
+       "Version": "2012-10-17"
+      },
+      "PolicyName": "DynamoDBAccess"
+     }
+    ],
+    "RoleName": {
+     "Fn::Join": [
+      "",
+      [
+       "EventTrackerIAMRole22c9b3-",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+       },
+       "-NONE"
+      ]
+     ]
+    },
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "amplify:friendly-name",
+      "Value": "amplifyData"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/EventTrackerIAMRole/Resource"
+   }
+  },
+  "EventTrackerDataSource": {
+   "Type": "AWS::AppSync::DataSource",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DynamoDBConfig": {
+     "AwsRegion": {
+      "Ref": "AWS::Region"
+     },
+     "TableName": {
+      "Fn::Select": [
+       1,
+       {
+        "Fn::Split": [
+         "/",
+         {
+          "Fn::Select": [
+           5,
+           {
+            "Fn::Split": [
+             ":",
+             {
+              "Fn::GetAtt": [
+               "EventTrackerTable",
+               "TableArn"
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    },
+    "Name": "EventTrackerTable",
+    "ServiceRoleArn": {
+     "Fn::GetAtt": [
+      "EventTrackerIAMRole6D8F8254",
+      "Arn"
+     ]
+    },
+    "Type": "AMAZON_DYNAMODB"
+   },
+   "DependsOn": [
+    "EventTrackerIAMRole6D8F8254"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/EventTrackerDataSource/Resource"
+   }
+  },
+  "QuerygetEventTrackerauth0FunctionQuerygetEventTrackerauth0FunctionAppSyncFunction4233717E": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPINONEDS12D461E0Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QuerygetEventTrackerauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0224a3e5097427da3f4460b5d6d2b86ad4195c9cb8da7bc13e7187eead1c3ae3.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/QuerygetEventTrackerauth0Function/QuerygetEventTrackerauth0Function.AppSyncFunction"
+   }
+  },
+  "QuerygetEventTrackerpostAuth0FunctionQuerygetEventTrackerpostAuth0FunctionAppSyncFunction325D3BD8": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPINONEDS12D461E0Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QuerygetEventTrackerpostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/QuerygetEventTrackerpostAuth0Function/QuerygetEventTrackerpostAuth0Function.AppSyncFunction"
+   }
+  },
+  "QueryGetEventTrackerDataResolverFnQueryGetEventTrackerDataResolverFnAppSyncFunction9A5988D0": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "EventTrackerDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QueryGetEventTrackerDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/08f4d557693d96c1a4efba0f9dc91330e4b19772fd5477c156468843e3d9cb5e.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/4c6a2d29f01c6091bd1d9afe16e5849d456c96f17c3b215938c8067399532719.vtl"
+    }
+   },
+   "DependsOn": [
+    "EventTrackerDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/QueryGetEventTrackerDataResolverFn/QueryGetEventTrackerDataResolverFn.AppSyncFunction"
+   }
+  },
+  "GetEventTrackerResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "FieldName": "getEventTracker",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "QuerygetEventTrackerauth0FunctionQuerygetEventTrackerauth0FunctionAppSyncFunction4233717E",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "QuerygetEventTrackerpostAuth0FunctionQuerygetEventTrackerpostAuth0FunctionAppSyncFunction325D3BD8",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "QueryGetEventTrackerDataResolverFnQueryGetEventTrackerDataResolverFnAppSyncFunction9A5988D0",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Query\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"getEventTracker\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "EventTrackerTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthauthenticatedUserRoleF4B8D996Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthunauthenticatedUserRoleA4C03600Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthIdentityPoolBA9F86ACRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Query"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/queryGetEventTrackerResolver"
+   }
+  },
+  "QuerylistEventTrackersauth0FunctionQuerylistEventTrackersauth0FunctionAppSyncFunctionE51AA611": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPINONEDS12D461E0Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QuerylistEventTrackersauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0224a3e5097427da3f4460b5d6d2b86ad4195c9cb8da7bc13e7187eead1c3ae3.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/QuerylistEventTrackersauth0Function/QuerylistEventTrackersauth0Function.AppSyncFunction"
+   }
+  },
+  "QuerylistEventTrackerspostAuth0FunctionQuerylistEventTrackerspostAuth0FunctionAppSyncFunctionD829D359": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPINONEDS12D461E0Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QuerylistEventTrackerspostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/QuerylistEventTrackerspostAuth0Function/QuerylistEventTrackerspostAuth0Function.AppSyncFunction"
+   }
+  },
+  "QueryListEventTrackersDataResolverFnQueryListEventTrackersDataResolverFnAppSyncFunction5E28E553": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "EventTrackerDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QueryListEventTrackersDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/9fcbe070ecd3023c5bf5b966fa9584757db9762eef123bad0820bd87591b2174.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/cc01911d0269d4080ea57505dc445dfc315ef7ad85d3d9d4ea1357858bff451d.vtl"
+    }
+   },
+   "DependsOn": [
+    "EventTrackerDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/QueryListEventTrackersDataResolverFn/QueryListEventTrackersDataResolverFn.AppSyncFunction"
+   }
+  },
+  "ListEventTrackerResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "FieldName": "listEventTrackers",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "QuerylistEventTrackersauth0FunctionQuerylistEventTrackersauth0FunctionAppSyncFunctionE51AA611",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "QuerylistEventTrackerspostAuth0FunctionQuerylistEventTrackerspostAuth0FunctionAppSyncFunctionD829D359",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "QueryListEventTrackersDataResolverFnQueryListEventTrackersDataResolverFnAppSyncFunction5E28E553",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Query\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"listEventTrackers\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "EventTrackerTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthauthenticatedUserRoleF4B8D996Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthunauthenticatedUserRoleA4C03600Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthIdentityPoolBA9F86ACRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Query"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/queryListEventTrackersResolver"
+   }
+  },
+  "MutationcreateEventTrackerinit0FunctionMutationcreateEventTrackerinit0FunctionAppSyncFunctionED2A58E5": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPINONEDS12D461E0Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationcreateEventTrackerinit0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/a183ddccbd956316c38ef97177b8f088ef0826f62023323f5ae6053d348ccffc.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/MutationcreateEventTrackerinit0Function/MutationcreateEventTrackerinit0Function.AppSyncFunction"
+   }
+  },
+  "MutationcreateEventTrackerauth0FunctionMutationcreateEventTrackerauth0FunctionAppSyncFunctionB9A88335": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPINONEDS12D461E0Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationcreateEventTrackerauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/d637c1fb7301003b8a5ada269338cf2e8df6cc0dc412ef13acc6158d680b6d3e.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/MutationcreateEventTrackerauth0Function/MutationcreateEventTrackerauth0Function.AppSyncFunction"
+   }
+  },
+  "MutationcreateEventTrackerpostAuth0FunctionMutationcreateEventTrackerpostAuth0FunctionAppSyncFunctionA6060B28": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPINONEDS12D461E0Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationcreateEventTrackerpostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/MutationcreateEventTrackerpostAuth0Function/MutationcreateEventTrackerpostAuth0Function.AppSyncFunction"
+   }
+  },
+  "MutationCreateEventTrackerDataResolverFnMutationCreateEventTrackerDataResolverFnAppSyncFunctionAE1B6B5D": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "EventTrackerDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationCreateEventTrackerDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/9528d8b24ee8dae0b3575350b92db63422081149b3886c248aaf3f8425a9eb43.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f4a52b72209a9dfa197b5e7367a5c378c5bb86de6e29ddd9e48b49a3fe54b249.vtl"
+    }
+   },
+   "DependsOn": [
+    "EventTrackerDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/MutationCreateEventTrackerDataResolverFn/MutationCreateEventTrackerDataResolverFn.AppSyncFunction"
+   }
+  },
+  "CreateEventTrackerResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "FieldName": "createEventTracker",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "MutationcreateEventTrackerinit0FunctionMutationcreateEventTrackerinit0FunctionAppSyncFunctionED2A58E5",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationcreateEventTrackerauth0FunctionMutationcreateEventTrackerauth0FunctionAppSyncFunctionB9A88335",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationcreateEventTrackerpostAuth0FunctionMutationcreateEventTrackerpostAuth0FunctionAppSyncFunctionA6060B28",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationCreateEventTrackerDataResolverFnMutationCreateEventTrackerDataResolverFnAppSyncFunctionAE1B6B5D",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"createEventTracker\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "EventTrackerTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthauthenticatedUserRoleF4B8D996Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthunauthenticatedUserRoleA4C03600Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthIdentityPoolBA9F86ACRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Mutation"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/mutationCreateEventTrackerResolver"
+   }
+  },
+  "MutationupdateEventTrackerinit0FunctionMutationupdateEventTrackerinit0FunctionAppSyncFunctionBB18020E": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPINONEDS12D461E0Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationupdateEventTrackerinit0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/06db846fd14e6fc371f22b12b5545ba8e2dbfeda85d8c8d586c71c282166657b.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/MutationupdateEventTrackerinit0Function/MutationupdateEventTrackerinit0Function.AppSyncFunction"
+   }
+  },
+  "MutationupdateEventTrackerauth0FunctionMutationupdateEventTrackerauth0FunctionAppSyncFunction67528A12": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "EventTrackerDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationupdateEventTrackerauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1f5fed297da9c32ae3af922bf3a38ccf23b956078887d16891ec06c20c64722c.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/89f92efd98b1034df0e2497fe31a97de6975de554b8a22e0677d05d6efcafa59.vtl"
+    }
+   },
+   "DependsOn": [
+    "EventTrackerDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/MutationupdateEventTrackerauth0Function/MutationupdateEventTrackerauth0Function.AppSyncFunction"
+   }
+  },
+  "MutationupdateEventTrackerpostAuth0FunctionMutationupdateEventTrackerpostAuth0FunctionAppSyncFunction230DA454": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPINONEDS12D461E0Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationupdateEventTrackerpostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/MutationupdateEventTrackerpostAuth0Function/MutationupdateEventTrackerpostAuth0Function.AppSyncFunction"
+   }
+  },
+  "MutationUpdateEventTrackerDataResolverFnMutationUpdateEventTrackerDataResolverFnAppSyncFunction981716E0": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "EventTrackerDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationUpdateEventTrackerDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/474bf0776ec2164a13191d1a0a9e057154931e4918fea5086f49850d02a5371b.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f4a52b72209a9dfa197b5e7367a5c378c5bb86de6e29ddd9e48b49a3fe54b249.vtl"
+    }
+   },
+   "DependsOn": [
+    "EventTrackerDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/MutationUpdateEventTrackerDataResolverFn/MutationUpdateEventTrackerDataResolverFn.AppSyncFunction"
+   }
+  },
+  "UpdateEventTrackerResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "FieldName": "updateEventTracker",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "MutationupdateEventTrackerinit0FunctionMutationupdateEventTrackerinit0FunctionAppSyncFunctionBB18020E",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationupdateEventTrackerauth0FunctionMutationupdateEventTrackerauth0FunctionAppSyncFunction67528A12",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationupdateEventTrackerpostAuth0FunctionMutationupdateEventTrackerpostAuth0FunctionAppSyncFunction230DA454",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationUpdateEventTrackerDataResolverFnMutationUpdateEventTrackerDataResolverFnAppSyncFunction981716E0",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"updateEventTracker\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "EventTrackerTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthauthenticatedUserRoleF4B8D996Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthunauthenticatedUserRoleA4C03600Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthIdentityPoolBA9F86ACRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Mutation"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/mutationUpdateEventTrackerResolver"
+   }
+  },
+  "MutationdeleteEventTrackerauth0FunctionMutationdeleteEventTrackerauth0FunctionAppSyncFunction366171FE": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "EventTrackerDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationdeleteEventTrackerauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1f5fed297da9c32ae3af922bf3a38ccf23b956078887d16891ec06c20c64722c.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e3416b4d47414f29c21e59a70e83bddb959ef0625854ed7fb0ca376573e99069.vtl"
+    }
+   },
+   "DependsOn": [
+    "EventTrackerDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/MutationdeleteEventTrackerauth0Function/MutationdeleteEventTrackerauth0Function.AppSyncFunction"
+   }
+  },
+  "MutationdeleteEventTrackerpostAuth0FunctionMutationdeleteEventTrackerpostAuth0FunctionAppSyncFunction4DAFA59C": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPINONEDS12D461E0Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationdeleteEventTrackerpostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/MutationdeleteEventTrackerpostAuth0Function/MutationdeleteEventTrackerpostAuth0Function.AppSyncFunction"
+   }
+  },
+  "MutationDeleteEventTrackerDataResolverFnMutationDeleteEventTrackerDataResolverFnAppSyncFunction0BF1FBA9": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "EventTrackerDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationDeleteEventTrackerDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/4f7907d1209a2c9953a0c053df402c634e359546d70c7cc5c2e8e21ea734880f.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f4a52b72209a9dfa197b5e7367a5c378c5bb86de6e29ddd9e48b49a3fe54b249.vtl"
+    }
+   },
+   "DependsOn": [
+    "EventTrackerDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/MutationDeleteEventTrackerDataResolverFn/MutationDeleteEventTrackerDataResolverFn.AppSyncFunction"
+   }
+  },
+  "DeleteEventTrackerResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "FieldName": "deleteEventTracker",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "MutationdeleteEventTrackerauth0FunctionMutationdeleteEventTrackerauth0FunctionAppSyncFunction366171FE",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationdeleteEventTrackerpostAuth0FunctionMutationdeleteEventTrackerpostAuth0FunctionAppSyncFunction4DAFA59C",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationDeleteEventTrackerDataResolverFnMutationDeleteEventTrackerDataResolverFnAppSyncFunction0BF1FBA9",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"deleteEventTracker\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "EventTrackerTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthauthenticatedUserRoleF4B8D996Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthunauthenticatedUserRoleA4C03600Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthIdentityPoolBA9F86ACRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Mutation"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/mutationDeleteEventTrackerResolver"
+   }
+  },
+  "SubscriptiononCreateEventTrackerauth0FunctionSubscriptiononCreateEventTrackerauth0FunctionAppSyncFunctionE41B5875": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPINONEDS12D461E0Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononCreateEventTrackerauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e6da5a6e993df8b5fdc91086b71eb53e72a3a97c98836ef9c9257776f36c452b.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/SubscriptiononCreateEventTrackerauth0Function/SubscriptiononCreateEventTrackerauth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptiononCreateEventTrackerpostAuth0FunctionSubscriptiononCreateEventTrackerpostAuth0FunctionAppSyncFunction90CDA07A": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPINONEDS12D461E0Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononCreateEventTrackerpostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/SubscriptiononCreateEventTrackerpostAuth0Function/SubscriptiononCreateEventTrackerpostAuth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptionOnCreateEventTrackerDataResolverFnSubscriptionOnCreateEventTrackerDataResolverFnAppSyncFunction3171752E": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPINONEDS12D461E0Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptionOnCreateEventTrackerDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fe3c43ada4b9d681a5e2312663ef7a73386424d73b73e51f8e2e9d4b50f7c502.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e0cff47fb007f0bbf2a4e43ca256d6aa7ec109821769fd79fa7c5e83f0e7f9fc.vtl"
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/SubscriptionOnCreateEventTrackerDataResolverFn/SubscriptionOnCreateEventTrackerDataResolverFn.AppSyncFunction"
+   }
+  },
+  "SubscriptiononCreateEventTrackerResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "FieldName": "onCreateEventTracker",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononCreateEventTrackerauth0FunctionSubscriptiononCreateEventTrackerauth0FunctionAppSyncFunctionE41B5875",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononCreateEventTrackerpostAuth0FunctionSubscriptiononCreateEventTrackerpostAuth0FunctionAppSyncFunction90CDA07A",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptionOnCreateEventTrackerDataResolverFnSubscriptionOnCreateEventTrackerDataResolverFnAppSyncFunction3171752E",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Subscription\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"onCreateEventTracker\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthauthenticatedUserRoleF4B8D996Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthunauthenticatedUserRoleA4C03600Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthIdentityPoolBA9F86ACRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Subscription"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/subscriptionOnCreateEventTrackerResolver"
+   }
+  },
+  "SubscriptiononUpdateEventTrackerauth0FunctionSubscriptiononUpdateEventTrackerauth0FunctionAppSyncFunctionD06A28A9": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPINONEDS12D461E0Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononUpdateEventTrackerauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e6da5a6e993df8b5fdc91086b71eb53e72a3a97c98836ef9c9257776f36c452b.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/SubscriptiononUpdateEventTrackerauth0Function/SubscriptiononUpdateEventTrackerauth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptiononUpdateEventTrackerpostAuth0FunctionSubscriptiononUpdateEventTrackerpostAuth0FunctionAppSyncFunctionBD7EC634": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPINONEDS12D461E0Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononUpdateEventTrackerpostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/SubscriptiononUpdateEventTrackerpostAuth0Function/SubscriptiononUpdateEventTrackerpostAuth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptionOnUpdateEventTrackerDataResolverFnSubscriptionOnUpdateEventTrackerDataResolverFnAppSyncFunction7D93801B": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPINONEDS12D461E0Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptionOnUpdateEventTrackerDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fe3c43ada4b9d681a5e2312663ef7a73386424d73b73e51f8e2e9d4b50f7c502.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e0cff47fb007f0bbf2a4e43ca256d6aa7ec109821769fd79fa7c5e83f0e7f9fc.vtl"
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/SubscriptionOnUpdateEventTrackerDataResolverFn/SubscriptionOnUpdateEventTrackerDataResolverFn.AppSyncFunction"
+   }
+  },
+  "SubscriptiononUpdateEventTrackerResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "FieldName": "onUpdateEventTracker",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononUpdateEventTrackerauth0FunctionSubscriptiononUpdateEventTrackerauth0FunctionAppSyncFunctionD06A28A9",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononUpdateEventTrackerpostAuth0FunctionSubscriptiononUpdateEventTrackerpostAuth0FunctionAppSyncFunctionBD7EC634",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptionOnUpdateEventTrackerDataResolverFnSubscriptionOnUpdateEventTrackerDataResolverFnAppSyncFunction7D93801B",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Subscription\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"onUpdateEventTracker\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthauthenticatedUserRoleF4B8D996Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthunauthenticatedUserRoleA4C03600Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthIdentityPoolBA9F86ACRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Subscription"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/subscriptionOnUpdateEventTrackerResolver"
+   }
+  },
+  "SubscriptiononDeleteEventTrackerauth0FunctionSubscriptiononDeleteEventTrackerauth0FunctionAppSyncFunction8DFEC4A5": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPINONEDS12D461E0Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononDeleteEventTrackerauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e6da5a6e993df8b5fdc91086b71eb53e72a3a97c98836ef9c9257776f36c452b.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/SubscriptiononDeleteEventTrackerauth0Function/SubscriptiononDeleteEventTrackerauth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptiononDeleteEventTrackerpostAuth0FunctionSubscriptiononDeleteEventTrackerpostAuth0FunctionAppSyncFunction896A83B8": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPINONEDS12D461E0Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononDeleteEventTrackerpostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/SubscriptiononDeleteEventTrackerpostAuth0Function/SubscriptiononDeleteEventTrackerpostAuth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptionOnDeleteEventTrackerDataResolverFnSubscriptionOnDeleteEventTrackerDataResolverFnAppSyncFunction6B95C9CB": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPINONEDS12D461E0Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptionOnDeleteEventTrackerDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fe3c43ada4b9d681a5e2312663ef7a73386424d73b73e51f8e2e9d4b50f7c502.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e0cff47fb007f0bbf2a4e43ca256d6aa7ec109821769fd79fa7c5e83f0e7f9fc.vtl"
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/SubscriptionOnDeleteEventTrackerDataResolverFn/SubscriptionOnDeleteEventTrackerDataResolverFn.AppSyncFunction"
+   }
+  },
+  "SubscriptiononDeleteEventTrackerResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+    },
+    "FieldName": "onDeleteEventTracker",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononDeleteEventTrackerauth0FunctionSubscriptiononDeleteEventTrackerauth0FunctionAppSyncFunction8DFEC4A5",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononDeleteEventTrackerpostAuth0FunctionSubscriptiononDeleteEventTrackerpostAuth0FunctionAppSyncFunction896A83B8",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptionOnDeleteEventTrackerDataResolverFnSubscriptionOnDeleteEventTrackerDataResolverFnAppSyncFunction6B95C9CB",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Subscription\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"onDeleteEventTracker\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthauthenticatedUserRoleF4B8D996Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthunauthenticatedUserRoleA4C03600Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthIdentityPoolBA9F86ACRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Subscription"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/subscriptionOnDeleteEventTrackerResolver"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WO0W6DMAxFv6XvwVvDF6ygPW4T7L0yiUEpIUGx06pC/PsEnTrt6frIR/bVoEsNxwPeuDB2LLzrYPkgFrKtoBlV1YcvTDiRUNqgisE6cTGohjjmZEhVmSVOf9iH54w3Pi/2HnCKtoNv7DydkEk5nGBpon/Y0dOqcJ75Hgws9a7XXY2C7fPkf3rPwWwlqhh6N+SEe6Pfz/5KaVVcnpGZhOFtC8UlnLIZSbYC6+Z+ZpmzqH3dCg4uDKsK0RJc+OWqNegjvB4u7FyRchA3ETSP/AEqykfkNgEAAA=="
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Outputs": {
+  "GetAttEventTrackerTableStreamArn": {
+   "Description": "Your DynamoDB table StreamArn.",
+   "Value": {
+    "Fn::GetAtt": [
+     "EventTrackerTable",
+     "TableStreamArn"
+    ]
+   },
+   "Export": {
+    "Name": {
+     "Fn::Join": [
+      ":",
+      [
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+       },
+       "GetAtt:EventTrackerTable:StreamArn"
+      ]
+     ]
+    }
+   }
+  },
+  "GetAttEventTrackerTableName": {
+   "Description": "Your DynamoDB table name.",
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "EventTracker-",
+      {
+       "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+      },
+      "-NONE"
+     ]
+    ]
+   },
+   "Export": {
+    "Name": {
+     "Fn::Join": [
+      ":",
+      [
+       {
+        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPI361E8170ApiId"
+       },
+       "GetAtt:EventTrackerTable:Name"
+      ]
+     ]
+    }
+   }
+  }
+ }
+}
