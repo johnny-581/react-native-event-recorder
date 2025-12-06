@@ -1,9 +1,11 @@
 import { getDateKey, useEvent } from "@/context/EventContext";
+import { useAuth } from "@/context/AuthContext";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import * as Haptics from "expo-haptics";
-import { Check, Circle, Edit3 } from "lucide-react-native";
+import { Check, Circle, Edit3, LogOut } from "lucide-react-native";
 import React, { useState } from "react";
 import {
+  Alert,
   Modal,
   Pressable,
   StyleSheet,
@@ -47,6 +49,7 @@ export default function DayView() {
 
   const { eventName, setEventName, selectedDate, toggleDay, isRecorded } =
     useEvent();
+  const { logout } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [editedName, setEditedName] = useState(eventName);
   const [motivationalMessage] = useState(getRandomMessage);
@@ -70,6 +73,27 @@ export default function DayView() {
     setIsEditing(false);
   };
 
+  const handleLogout = () => {
+    Alert.alert(
+      "Sign Out",
+      "Are you sure you want to sign out?",
+      [
+        { text: "Cancel", style: "cancel" },
+        {
+          text: "Sign Out",
+          style: "destructive",
+          onPress: async () => {
+            try {
+              await logout();
+            } catch (error) {
+              console.error("Logout error:", error);
+            }
+          },
+        },
+      ]
+    );
+  };
+
   const colors = {
     background: isDark ? "#0D1117" : "#F8FAFC",
     card: isDark ? "#161B22" : "#FFFFFF",
@@ -88,6 +112,14 @@ export default function DayView() {
         { backgroundColor: colors.background, paddingTop: insets.top },
       ]}
     >
+      {/* Top Bar with Logout */}
+      <View style={styles.topBar}>
+        <View style={styles.topBarSpacer} />
+        <Pressable style={styles.logoutButton} onPress={handleLogout}>
+          <LogOut size={22} color={colors.textSecondary} />
+        </Pressable>
+      </View>
+
       {/* Date Header */}
       <View style={styles.header}>
         <Text style={[styles.dateText, { color: colors.text }]}>
@@ -216,11 +248,23 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 24,
   },
+  topBar: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: 8,
+  },
+  topBarSpacer: {
+    width: 38,
+  },
+  logoutButton: {
+    padding: 8,
+  },
   header: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 20,
+    marginTop: 12,
     marginBottom: 8,
     gap: 12,
   },

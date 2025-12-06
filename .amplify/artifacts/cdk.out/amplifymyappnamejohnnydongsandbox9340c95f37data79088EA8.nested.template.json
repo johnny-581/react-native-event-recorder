@@ -1,26 +1,15 @@
 {
- "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"AmplifySandbox\",\"createdWith\":\"1.20.3\",\"stackType\":\"api-AppSync\",\"metadata\":{\"dataSources\":\"dynamodb\",\"authorizationModes\":\"amazon_cognito_identity_pools,amazon_cognito_user_pools,api_key,aws_iam\",\"customOperations\":\"\"}}",
+ "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"AmplifySandbox\",\"createdWith\":\"1.20.3\",\"stackType\":\"api-AppSync\",\"metadata\":{\"dataSources\":\"dynamodb\",\"authorizationModes\":\"amazon_cognito_identity_pools,amazon_cognito_user_pools,aws_iam\",\"customOperations\":\"\"}}",
  "Resources": {
   "amplifyDataGraphQLAPI42A6FA33": {
    "Type": "AWS::AppSync::GraphQLApi",
    "Properties": {
     "AdditionalAuthenticationProviders": [
      {
-      "AuthenticationType": "AMAZON_COGNITO_USER_POOLS",
-      "UserPoolConfig": {
-       "AwsRegion": {
-        "Ref": "AWS::Region"
-       },
-       "UserPoolId": {
-        "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthUserPool20B9C4DERef"
-       }
-      }
-     },
-     {
       "AuthenticationType": "AWS_IAM"
      }
     ],
-    "AuthenticationType": "API_KEY",
+    "AuthenticationType": "AMAZON_COGNITO_USER_POOLS",
     "Name": "amplifyData",
     "Tags": [
      {
@@ -35,7 +24,16 @@
       "Key": "created-by",
       "Value": "amplify"
      }
-    ]
+    ],
+    "UserPoolConfig": {
+     "AwsRegion": {
+      "Ref": "AWS::Region"
+     },
+     "DefaultAction": "ALLOW",
+     "UserPoolId": {
+      "Ref": "referencetoamplifymyappnamejohnnydongsandbox9340c95f37authNestedStackauthNestedStackResource0ABC4ACEOutputsamplifymyappnamejohnnydongsandbox9340c95f37authamplifyAuthUserPool20B9C4DERef"
+     }
+    }
    },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
@@ -53,30 +51,13 @@
      ]
     },
     "DefinitionS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/03cf589147e50de67596159a55a654a2d6da52615afc0058eb7b081f7ef92524.graphql"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/ecba2d4c207dbc23957f6dbd67ddff8eca453a82c1c947b52184b39bd8fe06ca.graphql"
     }
    },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
     "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/GraphQLAPI/TransformerSchema"
-   }
-  },
-  "amplifyDataGraphQLAPIDefaultApiKey1C8ED374": {
-   "Type": "AWS::AppSync::ApiKey",
-   "Properties": {
-    "ApiId": {
-     "Fn::GetAtt": [
-      "amplifyDataGraphQLAPI42A6FA33",
-      "ApiId"
-     ]
-    },
-    "Expires": 1767592619
-   },
-   "UpdateReplacePolicy": "Delete",
-   "DeletionPolicy": "Delete",
-   "Metadata": {
-    "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/GraphQLAPI/DefaultApiKey"
    }
   },
   "amplifyDataGraphQLAPINONEDS684BF699": {
@@ -229,7 +210,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/e99cf05d5a6243988a382834f2828f5080181c6ac1b8fdf2fab7e2e5d3291d3a.json"
+       "/730687352c563fd5b36882103f6e5189ddfdd5580d913b8101b7c4d799ba6600.json"
       ]
      ]
     }
@@ -418,7 +399,7 @@
      }
     ],
     "SourceObjectKeys": [
-     "c17e0fb4aba33ee485f01bb182e8a9e9f95428b13fe01cbde39235bc344dbaf8.zip"
+     "45d9ad1dad6f96b0232bc7ca36ec809aa08ea58bfde497ea9e895150f1d53c97.zip"
     ],
     "SourceMarkers": [
      {}
@@ -923,7 +904,7 @@
      }
     ],
     "SourceObjectKeys": [
-     "d76ff37e321ebe9ed923e6a3ba004d61549de07ebc337311092622668f75d106.zip"
+     "eb586f4312c94cf8d4cb7e8f8a853ab5bb0919253ca45778ecbe40422bbd95e7.zip"
     ],
     "SourceMarkers": [
      {}
@@ -1019,7 +1000,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11Qy27CMBD8Fu7GLeELQlB7KEKUSL1Gi7MJBj9Sr0MURfn3yjGEtqd5rHY0uwlP1glfLaCjpSivSyVPfNgjeSxzD+LKjki2dQIZdFQM0DTUG8GHdwfN+VuljdwAIcsqMzmfu7SRv1QuzqghGGkjP7Bne2twCx7yGJpV5qlGRms+bFpxRR8mdxbhYJUU/dO+6yhCh7BdDCU2yvYajedxtJ0NBkToiacBRqZAn0rgQ1aZHfTovtCRtIbl0tQKvTVvrRE+ODPJqtkcmQTNh6NV0xETPitGNjIizYfcO2nqAzjQ6NFN84cYxyDjp7OWvNXzv0Pqg8euhQo9C+hIKMnTjjIlp+psOin3UEtT/8n/F3pw9iZLdPFfxpbIL/RySxKerPjr4kJSLl1rvNTIjxF/AFm6j80hAgAA"
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11Qy27CMBD8Fu7GLeELQlB7QYgSqddocZbU4EfqdYgiK/9eOYbQ9jSPlcezm/FsnfHVAnpaivq6VPLEwx7JY116EFd2RLKdE8igpypA29JgBA/vDtqvb5W3cgOErDibyfnY5a38pUrxhRrY3hrcgocyRRVn81QjozUPm05c0cfJnSU4WCXF8LTvOon4c3xdhRpbZQeNxvM02s4GAyL0xPMII1OgTzXwUJzNDgZ0n+hIWsNKaRqF3pq3zggfnZkU59kcmQTNw9GqaYkJnxUTGxmR5qH0TprmAA40enTT/CHGMcp036Ijb/V85Zj64KlrpWLPCnoSSvK8p0LJqTqbVio9NNI0f/L/hR6cvckaXbqXsTXyC73csoxnK/66uJCUS9cZLzXyY8If406CRhcCAAA="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-myappname-johnnydong-sandbox-9340c95f37/data/CDKMetadata/Default"
@@ -1366,14 +1347,6 @@
     "Fn::GetAtt": [
      "amplifyDataAmplifyCodegenAssetsAmplifyCodegenAssetsDeploymentCustomResource1536MiB21775929",
      "DestinationBucketArn"
-    ]
-   }
-  },
-  "amplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPIDefaultApiKey3EFCA659ApiKey": {
-   "Value": {
-    "Fn::GetAtt": [
-     "amplifyDataGraphQLAPIDefaultApiKey1C8ED374",
-     "ApiKey"
     ]
    }
   }

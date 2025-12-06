@@ -1,6 +1,7 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode, useRef } from 'react';
-import { generateClient } from 'aws-amplify/data';
 import type { Schema } from '@/amplify/data/resource';
+import { generateClient } from 'aws-amplify/data';
+import React, { createContext, ReactNode, useContext, useEffect, useRef, useState } from 'react';
+import { useAuth } from './AuthContext';
 
 // Generate the Amplify Data client
 const client = generateClient<Schema>();
@@ -25,11 +26,21 @@ export function EventProvider({ children }: { children: ReactNode }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   
+  // Get auth state
+  const { isAuthenticated, isLoading: authLoading } = useAuth();
+  
   // Store the tracker ID for updates
   const trackerIdRef = useRef<string | null>(null);
 
-  // Load data from Amplify on mount
+  // Load data from Amplify only when authenticated
   useEffect(() => {
+    // Don't load if auth is still loading or user is not authenticated
+    if (authLoading || !isAuthenticated) {
+      setIsLoaded(true);
+      setIsLoading(false);
+      return;
+    }
+
     async function loadData() {
       try {
         setIsLoading(true);
@@ -73,7 +84,16 @@ export function EventProvider({ children }: { children: ReactNode }) {
       }
     }
     loadData();
-  }, []);
+  }, [isAuthenticated, authLoading]);
+
+  // Reset data when user logs out
+  useEffect(() => {
+    if (!isAuthenticated && !authLoading) {
+      setEventNameState('Swimming');
+      setRecordedDays(new Set());
+      trackerIdRef.current = null;
+    }
+  }, [isAuthenticated, authLoading]);
 
   // Save event name when it changes
   const setEventName = async (name: string) => {

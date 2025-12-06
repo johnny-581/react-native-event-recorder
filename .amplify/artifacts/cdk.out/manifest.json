@@ -22,7 +22,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/b403848c894e12d7565a5fb6f238bd362bfbca12bd09b142a24be5c20fb358e8.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/05e3f22debf5b36f50a0de09d15f8e160540c41064fc77a650b176c1582a6cb8.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -279,12 +279,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "amplifyDataGraphQLAPITransformerSchemaFF50A789"
-          }
-        ],
-        "/amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/GraphQLAPI/DefaultApiKey": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "amplifyDataGraphQLAPIDefaultApiKey1C8ED374"
           }
         ],
         "/amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/GraphQLAPI/NONE_DS": [
@@ -835,6 +829,26 @@
             "data": "Subscription.onDeleteEventTracker"
           }
         ],
+        "/amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/EventTrackerOwnerDataResolverFn/EventTrackerOwnerDataResolverFn.AppSyncFunction": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EventTrackerOwnerDataResolverFnEventTrackerOwnerDataResolverFnAppSyncFunctionDB5B1120"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "EventTrackerOwnerDataResolverFn"
+          }
+        ],
+        "/amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/eventTrackerOwnerResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EventTrackerownerResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "EventTracker.owner"
+          }
+        ],
         "/amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifyData/EventTracker/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
@@ -1111,12 +1125,6 @@
             "data": "amplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataAmplifyCodegenAssetsAmplifyCodegenAssetsDeploymentCustomResource1536MiBFEF9EDB2DestinationBucketArn"
           }
         ],
-        "/amplify-myappname-johnnydong-sandbox-9340c95f37/data/amplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPIDefaultApiKey3EFCA659ApiKey": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "amplifymyappnamejohnnydongsandbox9340c95f37dataamplifyDataGraphQLAPIDefaultApiKey3EFCA659ApiKey"
-          }
-        ],
         "/amplify-myappname-johnnydong-sandbox-9340c95f37/data.NestedStack/data.NestedStackResource": [
           {
             "type": "aws:cdk:logicalId",
@@ -1151,12 +1159,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "amplifyApiModelSchemaS3Uri"
-          }
-        ],
-        "/amplify-myappname-johnnydong-sandbox-9340c95f37/awsAppsyncApiKey": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "awsAppsyncApiKey"
           }
         ],
         "/amplify-myappname-johnnydong-sandbox-9340c95f37/awsAppsyncAdditionalAuthenticationTypes": [

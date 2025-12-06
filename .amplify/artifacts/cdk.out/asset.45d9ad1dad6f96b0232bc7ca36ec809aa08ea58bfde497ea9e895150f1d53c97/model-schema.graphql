@@ -1,0 +1,5 @@
+type EventTracker @model @auth(rules: [{allow: owner, ownerField: "owner"}])
+{
+  eventName: String!
+  recordedDays: [String]
+}
